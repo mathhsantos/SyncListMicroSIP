@@ -1,0 +1,6 @@
+@SyncListMicroSIP_HostAddress = http://localhost:5217
+
+GET {{SyncListMicroSIP_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
