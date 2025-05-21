@@ -18,6 +18,7 @@ namespace SyncListMicroSIP.Controllers
             _contactRepository = contactRepository;
         }
 
+        [Authorize]
         [HttpPost("")]
         public async Task<IActionResult> PostContact([FromBody] PostContactDto postContactDto)
         {
@@ -51,7 +52,7 @@ namespace SyncListMicroSIP.Controllers
         {
             var contact = await _contactRepository.DeleteContact(id);
 
-            if (contact == null)
+            if (contact == null) 
             {
                 return NotFound(new ResponseDto<string>($"Ramal {id} não encontrado!"));
             }
@@ -62,7 +63,6 @@ namespace SyncListMicroSIP.Controllers
             }
 
             return Ok(new ResponseDto<string>($"Usuario Id = {contact.Number} removido com sucesso!"));
-
         }
     }
 }

@@ -8,7 +8,6 @@ namespace SyncListMicroSIP.Data.Mappings
     {
         public void Configure(EntityTypeBuilder<Contact> builder)
         {
-
             builder.ToTable("Contact");
 
             builder.HasKey(x => x.Number);
@@ -80,7 +79,7 @@ namespace SyncListMicroSIP.Data.Mappings
 
             builder.Property(x => x.Starred)
                 .HasColumnType("int")
-                .HasDefaultValue(1)
+                .HasDefaultValue(0)
                 .IsRequired();
 
             builder.Property(x => x.Info)

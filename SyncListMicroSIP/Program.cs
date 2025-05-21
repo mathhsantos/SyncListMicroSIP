@@ -19,6 +19,16 @@ namespace SyncListMicroSIP
 
             // Add services to the container.
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("allowAll", policy =>
+                {
+                    policy.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+                });
+            });
+
             builder.Services.AddDbContext<ContactDbContext>(options =>
             {
                 options.UseMySql(builder.Configuration.GetConnectionString("MySQL"), new MySqlServerVersion(new Version(8, 0, 41)));
@@ -78,6 +88,7 @@ namespace SyncListMicroSIP
                 app.UseSwaggerUI();
             }
 
+            app.UseCors("allowAll");
             app.UseHttpsRedirection();
             app.UseAuthentication();
             app.UseAuthorization();
