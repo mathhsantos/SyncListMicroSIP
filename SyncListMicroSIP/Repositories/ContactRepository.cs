@@ -36,6 +36,11 @@ namespace SyncListMicroSIP.Repositories
         {
             var contact = await GetOneContact(id);
 
+            if(contact == null)
+            {
+                return contact;
+            }
+
             _db.Contacts.Remove(contact);
 
             return contact;

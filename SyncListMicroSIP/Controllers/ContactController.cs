@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SyncListMicroSIP.Dtos;
 using SyncListMicroSIP.Interface;
@@ -44,6 +45,7 @@ namespace SyncListMicroSIP.Controllers
             return Ok(new ResponseDto<IEnumerable<Contact>>(contacts));
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteContact([FromRoute] string id)
         {
